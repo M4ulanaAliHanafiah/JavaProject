@@ -13,20 +13,20 @@ public class Project1 {
         int umur;
 
         // Membuat objek Scanner untuk input dari keyboard
-        Scanner inputData = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
         LocalDateTime waktuSekarang = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         
         // Mengambil data nama, hobi, dan umur dari pengguna
         System.out.println("----------BIODATA----------");
         System.out.print("Nama : ");
-        nama = inputData.nextLine();
+        nama = input.nextLine();
         System.out.print("Hobi : ");
-        hobi = inputData.nextLine();
+        hobi = input.nextLine();
         System.out.print("Umur : ");
-        umur = inputData.nextInt();
-        
-        // memformat Waktu agar menjadi dd-MM-yyyy
+        umur = input.nextInt();
+
+        // Memformat waktu menjadi format dd-MM-yyyy
         waktuFormat = waktuSekarang.format(formatter);
         System.out.println("Waktu saat ini: " + waktuFormat);
         
@@ -39,6 +39,6 @@ public class Project1 {
         System.out.println("Umur tahun depan: " + (umur + 1) + " Tahun");
 
 
-        inputData.close();
+        input.close();
     }
 }
