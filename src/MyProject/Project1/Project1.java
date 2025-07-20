@@ -25,6 +25,8 @@ public class Project1 {
         hobi = inputData.nextLine();
         System.out.print("Umur : ");
         umur = inputData.nextInt();
+        
+        // memformat Waktu agar menjadi dd-MM-yyyy
         waktuFormat = waktuSekarang.format(formatter);
         System.out.println("Waktu saat ini: " + waktuFormat);
         
