@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 public class ReservasiBioskop {
 
+    // deklarasi variable dengan nilai tetap
     private static final int JAM_BUKA = 10;
     private static final int JAM_TUTUP = 21;
     private static final DateTimeFormatter FORMAT_TANGGAL = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -15,6 +16,7 @@ public class ReservasiBioskop {
         LocalDateTime waktuSaatIni = LocalDateTime.now();
         LocalTime jamSaatIni = waktuSaatIni.toLocalTime();
 
+        // input data
         System.out.println("=== Aplikasi Reservasi Kursi Bioskop Mini ===");
         System.out.println("Waktu saat ini: " + waktuSaatIni);
 
@@ -30,6 +32,7 @@ public class ReservasiBioskop {
             return;
         }
 
+        // Validasi data
         if (!isWaktuReservasiValid(jamSaatIni)) {
             System.out.println("Reservasi hanya bisa dilakukan antara jam 10:00 - 21:00.");
             input.close();
