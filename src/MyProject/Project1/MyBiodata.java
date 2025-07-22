@@ -1,13 +1,12 @@
 package MyProject.Project1;
 
-import java.util.Scanner;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
 
-public class Project1 {
-
+public class MyBiodata {
     public static void main(String[] args) {
-
+        
         // Deklarasi Variable
         String nama, hobi, waktuFormat;
         int umur;
