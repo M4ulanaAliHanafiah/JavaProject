@@ -12,11 +12,14 @@ public class ReservasiBioskop {
     private static final DateTimeFormatter FORMAT_TANGGAL = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
     public static void main(String[] args) {
+        // mendeklarasikan untuk menerima input dari keyboard.
         Scanner input = new Scanner(System.in);
+
+        // Mengambil waktu dan jam saat ini
         LocalDateTime waktuSaatIni = LocalDateTime.now();
         LocalTime jamSaatIni = waktuSaatIni.toLocalTime();
 
-        // input data
+        // Menampilkan dan Menerima Input
         System.out.println("=== Aplikasi Reservasi Kursi Bioskop Mini ===");
         System.out.println("Waktu saat ini: " + waktuSaatIni);
 
@@ -26,19 +29,21 @@ public class ReservasiBioskop {
         System.out.print("Pilih jenis kursi (R = Reguler, V = VIP, X = VVIP): ");
         String kodeKursi = input.nextLine().trim().toUpperCase();
 
+
+        // Validasi Data
         if (nama.isEmpty() || kodeKursi.isEmpty()) {
             System.out.println("Nama dan kode kursi tidak boleh kosong.");
             input.close();
             return;
         }
 
-        // Validasi data
         if (!isWaktuReservasiValid(jamSaatIni)) {
             System.out.println("Reservasi hanya bisa dilakukan antara jam 10:00 - 21:00.");
             input.close();
             return;
         }
 
+        // Validasi Kode Kursi
         JenisKursi kursi = JenisKursi.fromKode(kodeKursi);
         if (kursi == null) {
             System.out.println("Kode kursi tidak valid!");
@@ -46,8 +51,10 @@ public class ReservasiBioskop {
             return;
         }
 
+        // Menampilkan Informasi Kursi
         tampilkanInformasiKursi(kursi);
 
+        // Menampilkan Ringkasan Reservasi
         System.out.println("Terima kasih, " + nama + ". Kursi " + kursi + " berhasil dipesan.");
         System.out.println("Total harga: Rp " + kursi.getHarga());
         System.out.println("Waktu pemesanan: " + waktuSaatIni.format(FORMAT_TANGGAL));
@@ -55,11 +62,13 @@ public class ReservasiBioskop {
         input.close();
     }
 
+    // Fungsi Cek Jam Operasional
     private static boolean isWaktuReservasiValid(LocalTime time) {
         return !time.isBefore(LocalTime.of(JAM_BUKA, 0)) &&
                !time.isAfter(LocalTime.of(JAM_TUTUP, 0));
     }
 
+    // Fungsi Tampilkan Info Kursi
     private static void tampilkanInformasiKursi(JenisKursi kursi) {
         switch (kursi) {
             case VVIP:
